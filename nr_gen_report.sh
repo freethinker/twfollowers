@@ -49,6 +49,8 @@ echo "Number/Percentage of followers who have never tweeted, have no followers t
 fivenumbers=$(cat twitterids.csv | grep -E "[0-9][0-9][0-9][0-9][0-9]" | wc -l)
 sixnumbers=$(cat twitterids.csv | grep -E "[0-9][0-9][0-9][0-9][0-9][0-9]" | wc -l)
 sevennumbers=$(cat twitterids.csv | grep -E "[0-9][0-9][0-9][0-9][0-9][0-9][0-9]" | wc -l)
+tennumbers=$(cat twitterids.csv | grep -E "[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]" | wc -l)
 echo "Number/Percentage of followers who have five or more than five numbers in their twitter ids $fivenumbers $(percentage $fivenumbers $totalfollowers)"
 echo "Number/Percentage of followers who have six or more than six numbers in their twitter ids $sixnumbers $(percentage $sixnumbers $totalfollowers)"
 echo "Number/Percentage of followers who have seven or more than seven numbers in their twitter ids $sevennumbers $(percentage $sevennumbers $totalfollowers)"
+echo "Number/Percentage of followers who have ten or more than ten numbers in their twitter ids $tennumbers $(percentage $tennumbers $totalfollowers)"
