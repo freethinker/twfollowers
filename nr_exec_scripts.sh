@@ -28,7 +28,8 @@ do
 	SCRIPTNAME=$(basename $f .sh)
 	SCRIPTFILE=$(echo "$SCRIPTNAME.sh")
 	CSVFILE=$(echo "$SCRIPTNAME.csv")
-	if [ "$SCRIPTNAME" != "$SELF" -a "$SCRIPTNAME" != "cycle_twitter_accounts" ]; then
+	NOREPORT=$(echo $SCRIPTNAME | grep -qE "^nr_" ; echo $?)
+	if [ $NOREPORT -eq 1 ]; then
 		bash $SCRIPTFILE $CSVFILE
 	fi
 done
