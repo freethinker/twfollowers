@@ -23,7 +23,6 @@ set -o nounset                              # Treat unset variables as an error
 sqlite3 ./scraperwiki.sqlite <<!
 .headers on
 .mode csv
-.output following_count_two_statuses_count_zero.csv
-select * from twitter_followers where profile_image like '%bs.twimg.com/sticky/default_profile_images%' AND following_count=2 AND statuses_count=0 order by created_at desc;
+.output zero_tweets_zero_followers.csv
+select * from twitter_followers where statuses_count=0 AND followers_count=0 order by created_at asc;
 !
-
