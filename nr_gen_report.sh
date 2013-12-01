@@ -30,13 +30,25 @@ zerotweets=$(count_lines zero_tweets)
 echo "Number/Percentage of followers who have never tweeted - $zerotweets $(percentage $zerotweets $totalfollowers)% "
 zerofollowers=$(count_lines zero_followers)
 echo "Number/Percentage of followers who have no followers themselves - $zerofollowers $(percentage $zerofollowers $totalfollowers)% "
+
 ztweetszfollowers=$(count_lines zero_tweets_zero_followers)
 echo "Number/Percentage of followers who have not tweeted and have no followers themselves - $ztweetszfollowers $(percentage $ztweetszfollowers $totalfollowers)% "
+
 defimage=$(count_lines profile_image_default)
 echo "Number/Percentage of followers who have not changed their default twitter image - $defimage $(percentage $defimage $totalfollowers)% "
+
 defimageztweets=$(count_lines profile_image_default_zero_tweets)
 echo "Number/Percentage of followers who have never tweeted and have not changed their default twitter image - $defimageztweets $(percentage $defimageztweets $totalfollowers)% "
+
 defimagezfollowers=$(count_lines profile_image_default_zero_followers)
 echo "Number/Percentage of followers who have no followers and have not changed their default twitter image - $defimagezfollowers $(percentage $defimagezfollowers $totalfollowers)% "
+
 defimageztweetszfollowers=$(count_lines profile_image_default_zero_tweets_zero_followers)
 echo "Number/Percentage of followers who have never tweeted, have no followers themselves and have not changed their default twitter image - $defimageztweetszfollowers $(percentage $defimageztweetszfollowers $totalfollowers)% "
+
+fivenumbers=$(cat twitterids.csv | grep -E "[0-9][0-9][0-9][0-9][0-9]" | wc -l)
+sixnumbers=$(cat twitterids.csv | grep -E "[0-9][0-9][0-9][0-9][0-9][0-9]" | wc -l)
+sevennumbers=$(cat twitterids.csv | grep -E "[0-9][0-9][0-9][0-9][0-9][0-9][0-9]" | wc -l)
+echo "Number/Percentage of followers who have five or more than five numbers in their twitter ids $fivenumbers $(percentage $fivenumbers $totalfollowers)"
+echo "Number/Percentage of followers who have six or more than six numbers in their twitter ids $sixnumbers $(percentage $sixnumbers $totalfollowers)"
+echo "Number/Percentage of followers who have seven or more than seven numbers in their twitter ids $sevennumbers $(percentage $sevennumbers $totalfollowers)"
