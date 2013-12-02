@@ -1,9 +1,9 @@
 #!/bin/bash - 
 #===============================================================================
 #
-#          FILE:  export-csv.sh
+#          FILE:  gen_html.sh
 # 
-#         USAGE:  ./export-csv.sh 
+#         USAGE:  ./gen_html.sh 
 # 
 #   DESCRIPTION:  
 # 
@@ -13,16 +13,15 @@
 #         NOTES:  ---
 #        AUTHOR: Pratik Sinha (freethinker), pratik@humbug.in
 #       COMPANY: http://www.humbug.in/
-#       CREATED: 11/29/2013 10:34:10 PM IST
+#       CREATED: 12/02/2013 09:11:14 AM IST
 #      REVISION:  ---
 #===============================================================================
 
 set -o nounset                              # Treat unset variables as an error
 
-#!/bin/bash
-sqlite3 ./scraperwiki.sqlite <<!
-.headers on
-.mode csv
-.output profile_image_default_zero_tweets_zero_followers.csv
-select screen_name,following_count from twitter_followers where profile_image like '%bs.twimg.com/sticky/default_profile_images%' AND statuses_count=0 AND followers_count=0 order by created_at asc;
-!
+FILE=$1
+cat $FILE | sort -t '/' -k 4n,4 | while read line
+do
+	id=$(echo $line | cut -d '/' -f 4)
+	echo '<a href="'$line'" target="_blank" rel="nofollow">'$id'</a>';
+done
