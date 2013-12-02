@@ -23,5 +23,5 @@ FILE=$1
 cat $FILE | sort -t '/' -k 4n,4 | while read line
 do
 	id=$(echo $line | cut -d '/' -f 4)
-	echo '<a href="'$line'" target="_blank" rel="nofollow">'$id'</a>';
+	echo -n '<a href="'$line'" target="_blank" rel="nofollow">'$id'</a> ';
 done
